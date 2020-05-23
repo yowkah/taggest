@@ -1,17 +1,30 @@
-version: '2.0'
+version: "2.0"
 services:
-    server:
-        build: ./server
-        ports:
-            - '9230:9229'
-            - '8081:8080'
-        volumes:
-            - ./server:/opt/node_app/
-            - /opt/node_app/node_modules
-    mongo:
-        image: mongo:latest
-        ports: 
-            - '27017:27017'
-        environment:
-            - MONGO_INITDB_ROOT_USERNAME=root
-            - MONGO_INITDB_ROOT_PASSWORD=drenthebestaatniet
+  server:
+    build: ./server
+    ports:
+      - "9230:9229"
+      - "8081:8080"
+    volumes:
+      - ./server:/opt/node_app/
+      - /opt/node_app/node_modules
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=drenthebestaatniet
+  client:
+    build: ./client
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./client:/opt/node_app/
+      - /opt/node_app/node_modules
+  proxy:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - "./nginx.conf:/etc/nginx/conf.d/default.conf:ro"
