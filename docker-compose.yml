@@ -15,6 +15,9 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=drenthebestaatniet
+      - MONGO_INITDB_DATABASE=taggest
+    volumes:
+      - ./mongo_init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
   client:
     build: ./client
     ports:
