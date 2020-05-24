@@ -27,6 +27,9 @@ services:
       - /opt/node_app/node_modules
   proxy:
     image: nginx:latest
+    depends_on:
+      - server
+      - client
     ports:
       - "80:80"
     volumes:
