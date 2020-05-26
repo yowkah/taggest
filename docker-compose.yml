@@ -8,6 +8,7 @@ services:
     volumes:
       - ./server:/opt/node_app/
       - /opt/node_app/node_modules
+      - storage:/storage
   mongo:
     image: mongo:latest
     ports:
@@ -34,3 +35,5 @@ services:
       - "80:80"
     volumes:
       - "./nginx.conf:/etc/nginx/conf.d/default.conf:ro"
+volumes:
+  storage:
