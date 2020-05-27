@@ -2,7 +2,7 @@
   .upload
     h1 UPLOAD
     el-form(:model="form" ref="form" label-width="120px")
-      el-upload(drag action="https://jsonplaceholder.typicode.com/posts/")
+      el-upload(drag action="test" :auto-upload="false" ref="upload")
         i.el-icon-upload
         .el-upload__text Drop file here 
           em click to upload
@@ -11,12 +11,7 @@
         el-input(v-model="form.title")
       el-form-item(label="description")
         el-input(type="textarea" v-model="form.description")
-    //- form(action="/api/upload" method="POST")
-      //- input#file(type="file" name="file")
-      //- br
-      //- input#fileTitle(name="title")
-      //- br
-      //- button#submit upload!
+      el-button(@click="submitForm") submit
     
 </template>
 
@@ -29,9 +24,30 @@ export default {
         title: "",
         description: "",
         tags: [],
-        video: {}
+        video: ''
       }
     };
+  }, methods: {
+
+    async submitForm(){
+      try {
+        console.log(this.$refs.upload.uploadFiles[0])
+        const formData = new FormData();
+
+        formData.append("video", this.$refs.upload.uploadFiles[0].raw)
+        formData.append("title", this.form.title)
+        formData.append("description", this.form.description)
+
+        await fetch("api/video", {
+          body: formData,
+          method: "post"
+        });
+
+        console.log('success!!!');
+      } catch(error) {
+        console.log(error);
+      }
+    }
   }
 };
 </script>
