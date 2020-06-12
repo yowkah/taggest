@@ -20,10 +20,23 @@ router.post("/", upload.single("video"), (req, res) => {
 });
 
 router.get('/', (req, res) => {
-  Video.find({}, (err, videos) => {
-    
-    if (err) return res.status(500).send('failed');
+  const {title='', contains='', excludes=''} = req.query;
+  Video.find({
+    title,
+    tags: {
+      $all: contains.split(','),
+      $nin: excludes.split(','),
+    },
+  }, (err, videos) => {
+    if(err) return res.status(500).send('failed');
     res.json(videos);
+  })
+});
+
+router.get('/tags', (req, res) => {
+  Video.find().distinct('tags', (err, tags) => {
+    if(err) return res.status(500).send('failed');
+    res.json(tags);
   })
 })
 
