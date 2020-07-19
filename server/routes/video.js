@@ -30,8 +30,8 @@ router.get('/', (req, res) => {
     },
   };
 
-  if (title) searchParams.title = title;
-  if (contains) searcParams.tags.$all = contains.split(',');
+  if (title) searchParams.title = new RegExp(`.*${title}.*`);
+  if (contains) searchParams.tags.$all = contains.split(',');
 
   Video.find(searchParams, (err, videos) => {
     if (err) return res.status(500).send('failed');

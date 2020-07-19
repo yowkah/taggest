@@ -1,15 +1,15 @@
 module.exports = {
   devServer: {
-    disableHostCheck: true
+    disableHostCheck: true,
   },
   configureWebpack: {
-    module :{
-        rules: [
-            {
-                test: /\.pug$/,
-                loader: 'pug-plain-loader'
-            }
-        ]
-    }
-  }
+    module: {
+      rules: [
+        {
+          test: /\.pug$/,
+          loader: 'pug-plain-loader',
+        },
+      ],
+    },
+  },
 };
