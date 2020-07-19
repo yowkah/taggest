@@ -11,7 +11,13 @@
         el-input(v-model='form.title')
       el-form-item(label='description')
         el-input(type='textarea' v-model='form.description')
-      el-select(filterable v-model="form.tags" multiple allow-create placeholder="Please enter a keyword")
+      el-select(
+        filterable
+        v-model="form.tags"
+        multiple
+        allow-create
+        placeholder="Please enter a keyword"
+      )
         el-option(v-for="tag in tags" :key="tag" :label="tag" :value="tag")
       el-button(@click='submitForm') submit
 </template>
@@ -27,14 +33,14 @@ export default {
         title: '',
         description: '',
         tags: [],
-        video: ''
-      }
+        video: '',
+      },
     };
   },
   computed: {
     tags() {
       return this.$store.state.tags;
-    }
+    },
   },
   methods: {
     async submitForm() {
@@ -48,18 +54,19 @@ export default {
 
         await fetch('api/video', {
           body: formData,
-          method: 'post'
+          method: 'post',
         });
 
         this.$store.commit('ADD_TAGS_IF_MISSING', this.form.tags);
       } catch (error) {
-        console.log(error);
+        // eslint-disable-next-line no-console
+        console.error(error);
       }
-    }
+    },
   },
   components: {
-    TagList
-  }
+    TagList,
+  },
 };
 </script>
 

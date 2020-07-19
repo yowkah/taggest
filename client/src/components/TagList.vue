@@ -15,11 +15,11 @@ export default {
   name: 'TagList',
   data() {
     return {
-      loading: false
+      loading: false,
     };
   },
   props: {
-    isWhitelist: Boolean
+    isWhitelist: Boolean,
   },
   computed: {
     options() {
@@ -32,10 +32,10 @@ export default {
       },
       set(tags) {
         const list = this.isWhitelist ? 'WHITELIST' : 'BLACKLIST';
-        this.$store.commit('SET_' + list, tags);
-      }
-    }
-  }
+        this.$store.commit(`SET_${list}`, tags);
+      },
+    },
+  },
 };
 </script>
 

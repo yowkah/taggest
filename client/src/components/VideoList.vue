@@ -12,16 +12,16 @@ export default {
   name: 'VideoList',
   data() {
     return {
-      videos: []
+      videos: [],
     };
   },
   mounted() {
     fetch('/api/video/')
-      .then(data => data.json())
-      .then(videos => {
+      .then((data) => data.json())
+      .then((videos) => {
         this.videos = videos;
       });
-  }
+  },
 };
 </script>
 
