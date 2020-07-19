@@ -12,4 +12,14 @@ module.exports = {
       ],
     },
   },
+  css: {
+    loaderOptions: {
+      sass: {
+        prependData: `
+        @import "~@/assets/__variables.scss";
+        @import "~@/assets/__utils.scss";
+        `,
+      },
+    },
+  },
 };

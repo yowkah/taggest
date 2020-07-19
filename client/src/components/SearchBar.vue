@@ -15,7 +15,6 @@ export default {
 
 </script>
 <style>
-@import '../assets/styling.scss';
 
 .search {
   background-color: transparent;

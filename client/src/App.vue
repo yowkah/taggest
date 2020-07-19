@@ -26,8 +26,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import './assets/styling.scss';
-
 @font-face {
   font-family: 'Sk-Modernist';
   src: url('./assets/Sk-Modernist-Regular.otf') format('opentype')
