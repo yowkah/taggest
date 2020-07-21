@@ -1,10 +1,6 @@
 $text-primary: #eff4ff;
 $text-secondary: #bbc3e3;
 $context-primary: #2a324e;
-$context-primary-lighter: lighten($context-primary, 0.05);
-$context-primary-darker: darken($context-primary, 0.05);
+$context-primary-lighter: lighten($context-primary, 10);
+$context-primary-darker: darken($context-primary, 10);
 $background-gradient: linear-gradient(315deg, #242a42 50%, #303757 100%);
-
-* {
-  font-family: 'Sk-Modernist';
-}
