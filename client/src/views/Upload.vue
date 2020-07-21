@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import TagList from '@/components/TagList.vue';
+import TagList from '../components/TagList.vue';
 
 export default {
   name: 'Upload',

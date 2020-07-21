@@ -10,11 +10,17 @@
       </div>
     </div>
     <div><searchbar v-model="searchValue"/></div>
+    <div id="filteringCluster">
+      <taglist class="whitelist"></taglist>
+      <taglist class="blacklist"></taglist>
+      <div class="advanced"></div>
+    </div>
   </div>
 </template>
 
 <script>
 import SearchBar from './components/SearchBar.vue';
+import TagList from './components/TagList.vue';
 
 export default {
   created() {
@@ -27,6 +33,7 @@ export default {
   },
   components: {
     searchbar: SearchBar,
+    taglist: TagList,
   },
 };
 </script>
@@ -81,5 +88,15 @@ body {
 
 .header {
   padding-bottom: 60px;
+}
+
+.whitelist {
+  background-color: $context-primary-lighter;
+}
+
+#filteringCluster {
+  display: flex;
+  flex-direction: row;
+  margin: 50px 0 0 0;
 }
 </style>
