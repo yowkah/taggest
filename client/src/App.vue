@@ -75,7 +75,7 @@ body {
 
 #app {
   width: 1440px;
-  padding-top: 170px;
+  padding-top: 130px;
 }
 
 .flex {
@@ -98,5 +98,8 @@ body {
   display: flex;
   flex-direction: row;
   margin: 50px 0 0 0;
+  border-radius: 12px;
+  background-color: $context-primary;
+  padding: 10px;
 }
 </style>
